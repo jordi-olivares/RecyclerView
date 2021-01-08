@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         listaContactos.setLayoutManager(llm);
 
-        ContactoAdaptador adaptador=new ContactoAdaptador(contactos);
+        ContactoAdaptador adaptador=new ContactoAdaptador(contactos,this);
         listaContactos.setAdapter(adaptador);
 
     }

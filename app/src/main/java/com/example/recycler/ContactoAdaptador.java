@@ -1,10 +1,12 @@
 package com.example.recycler;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,11 +16,12 @@ import java.util.ArrayList;
 public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.ContactoViewHolder> {
 
 
-
+    Context contexto;
     ArrayList<Contacto> contactos;
 
-    public ContactoAdaptador(ArrayList<Contacto> contactos) {
+    public ContactoAdaptador(ArrayList<Contacto> contactos, Context contexto) {
         this.contactos = contactos;
+        this.contexto=contexto;
     }
 
     //Infla el layout y lo pasa al viewholder para obtener los view
@@ -36,6 +39,13 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
         holder.imgFotoCV.setImageResource(contacto.getFoto());
         holder.tvNombreCV.setText(contacto.getNombre());
         holder.tvTelefonoCV.setText(contacto.getTelefono());
+
+        holder.imgFotoCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(contexto, "Hola, Contexto"+position, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
